@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="fineprint">
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="app.less" type="text/css" rel="stylesheet/less">
+</head>
+
+<body>
+    <!-- Livereload script for development only (stripped during dist build) -->
+    <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+    <!-- JS from Bower Components -->
+    <script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <!-- Add New Bower Component JS Above -->
+    <!-- Main App JS -->
+    <script src="app.js"></script>
+    <script type="text/javascript" data-concat='false'>
+    angular.module('fineprint').controller('SampleController', ['$scope', function($scope) {
+        console.log('SampleController is Up');
+        $scope.input = [{
+            "id": "1",
+            "text": "This is the %%x first %%x fine print",
+            "fpInputs": [{
+                "index": 0,
+                "type": "String",
+                "value": ""
+            }, {
+                "index": 1,
+                "type": "Integer",
+                "value": 0
+            }]
+        }, {
+            "id": "2",
+            "text": "This is %%x the %%x second fine print",
+            "fpInputs": [{
+                "index": 0,
+                "type": "String",
+                "value": ""
+            }, {
+                "index": 1,
+                "type": "Integer",
+                "value": 0
+            }]
+        }];
+    }]);
+    </script>
+    <script src="directive/fineprint/fineprint.js"></script>
+    <script src="directive/fine-print-item/fine-print-item.js"></script>
+    <!-- Add New Component JS Above -->
+    <div>
+        <div id="content" class="container">
+            <div class="row">
+                <div class='col-md-6 col-md-2-offset' ng-controller="SampleController">
+                    <fineprint ng-model='output' input='input'></fineprint>
+                    <br>
+                    Result:-
+                    <br>
+                    <pre>
+                         {{output}}
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
