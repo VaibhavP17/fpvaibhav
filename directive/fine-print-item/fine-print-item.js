@@ -7,7 +7,7 @@ angular.module('fineprint').directive('finePrintItem', function($compile) {
         var array = input.fpInputs;
         for (var i = 0; i < array.length; i++) {
             // do your monkey business here.
-            text = text.replace('%%x', '<input type="text" ng-model="x"/>');
+            text = text.replace('%%x', '<input type="text" ng-model="fp.fpInputs['+i+'].value"/>');
         }
         return text;
     }
@@ -29,7 +29,7 @@ angular.module('fineprint').directive('finePrintItem', function($compile) {
                 post: function(scope, element, attr, ln) {
                     console.log('fp-item post compile');
                 }
-            }
+            };
         }
     };
 });
